@@ -1,1 +1,5 @@
-document.write(5 + 6);
+function functionName() {
+ 
+document.write("You are learning how to call JavaScript function in html");
+
+}
