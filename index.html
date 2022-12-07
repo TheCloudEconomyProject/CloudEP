@@ -194,6 +194,8 @@ mapRoot.setThemes([
 var mapChart = mapRoot.container.children.push(am5map.MapChart.new(mapRoot, {
   panX: "none",
   panY: "none",
+  minZoomLevel: 0.5,
+  maxZoomLevel: 1
   projection: am5map.geoMercator()
 }));
 
