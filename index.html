@@ -29,7 +29,7 @@ root.setThemes([
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
-var chart = root.container.children.push(am5map.MapChart.new(root, {
+var mapChart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "translateX",
   panY: "translateY",
   projection: am5map.geoMercator()
@@ -37,7 +37,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+var polygonSeries = mapChart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow,
   exclude: ["AQ"]
 }));
@@ -66,7 +66,7 @@ polygonSeries.mapPolygons.template.on("active", function (active, target) {
 });
 
 // Make stuff animate on load
-chart.appear(1000, 100);
+mapChart.appear(1000, 100);
   
 // Create root element for chart
 
@@ -74,5 +74,4 @@ chart.appear(1000, 100);
 </script>
 
 <!-- HTML -->
-<div id="mapdiv"></div>
 <div id="mapdiv"></div>
