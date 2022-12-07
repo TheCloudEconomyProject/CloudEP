@@ -21,57 +21,6 @@
 <!-- Chart code -->
 <script>
 am5.ready(function() {
-  
-// Create root element for map
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var mapRoot = am5.Root.new("mapdiv");
-
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-mapRoot.setThemes([
-  am5themes_Animated.new(mapRoot)
-]);
-
-// Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
-var mapChart = mapRoot.container.children.push(am5map.MapChart.new(mapRoot, {
-  panX: "translateX",
-  panY: "translateY",
-  projection: am5map.geoMercator()
-}));
-
-// Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-var polygonSeries = mapChart.series.push(am5map.MapPolygonSeries.new(mapRoot, {
-  geoJSON: am5geodata_worldLow,
-  exclude: ["AQ"]
-}));
-
-polygonSeries.mapPolygons.template.setAll({
-  tooltipText: "{name}",
-  toggleKey: "active",
-  interactive: true
-});
-
-polygonSeries.mapPolygons.template.states.create("hover", {
-  fill: root.interfaceColors.get("primaryButtonHover")
-});
-
-polygonSeries.mapPolygons.template.states.create("active", {
-  fill: root.interfaceColors.get("primaryButtonHover")
-});
-
-var previousPolygon;
-
-polygonSeries.mapPolygons.template.on("active", function (active, target) {
-  if (previousPolygon && previousPolygon != target) {
-    previousPolygon.set("active", false);
-  }
-  previousPolygon = target;
-});
-
-// Make stuff animate on load
-mapChart.appear(1000, 100);
 
 // Create rootChart element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element 
@@ -237,4 +186,3 @@ chart.appear(1000, 100);
 
 <!-- HTML -->
 <div id="chartdiv"></div>
-<div id="mapdiv"></div>
