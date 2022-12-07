@@ -64,12 +64,12 @@ polygonSeries.mapPolygons.template.on("active", function (active, target) {
   if (previousPolygon && previousPolygon != target) {
     previousPolygon.set("active", false);
   }
-  if (target.get("active")) {
-    polygonSeries.zoomToDataItem(target.dataItem );
-  }
-  else {
-    chart.goHome();
-  }
+//  if (target.get("active")) {
+//    polygonSeries.zoomToDataItem(target.dataItem );
+//  }
+//  else {
+//    chart.goHome();
+//  }
   previousPolygon = target;
 });
 
