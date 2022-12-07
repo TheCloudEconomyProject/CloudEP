@@ -16,21 +16,21 @@
 <script>
 am5.ready(function() {
 
-// Create root element
+// Create root element for chart
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element 
-var root = am5.Root.new("chartdiv");
+var chartRoot = am5.Root.new("chartdiv");
 
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/ 
-root.setThemes([
-  am5themes_Animated.new(root)
+chartRoot.setThemes([
+  am5themes_Animated.new(chartRoot)
 ]);
 
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
-var chart = root.container.children.push(am5xy.XYChart.new(root, {
+var chart = chartRoot.container.children.push(am5xy.XYChart.new(chartRoot, {
   panX: true,
   panY: true,
   wheelX: "panX",
@@ -64,17 +64,17 @@ function generateDatas(count) {
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+var xAxis = chart.xAxes.push(am5xy.DateAxis.new(chartRoot, {
   maxDeviation: 0.2,
   baseInterval: {
     timeUnit: "day",
     count: 1
   },
-  renderer: am5xy.AxisRendererX.new(root, {}),
-  tooltip: am5.Tooltip.new(root, {})
+  renderer: am5xy.AxisRendererX.new(chartRoot, {}),
+  tooltip: am5.Tooltip.new(chartRoot, {})
 }));
 
-var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(chartRoot, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
 
@@ -82,14 +82,14 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 for (var i = 0; i < 5; i++) {
-  var series = chart.series.push(am5xy.LineSeries.new(root, {
+  var series = chart.series.push(am5xy.LineSeries.new(chartRoot, {
     name: "Series " + i,
     xAxis: xAxis,
     yAxis: yAxis,
     valueYField: "value",
     valueXField: "date",
     legendValueText: "{valueY}",
-    tooltip: am5.Tooltip.new(root, {
+    tooltip: am5.Tooltip.new(chartRoot, {
       pointerOrientation: "horizontal",
       labelText: "{valueY}"
     })
@@ -110,7 +110,7 @@ for (var i = 0; i < 5; i++) {
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+var cursor = chart.set("cursor", am5xy.XYCursor.new(chartRoot, {
   behavior: "none"
 }));
 cursor.lineY.set("visible", false);
@@ -122,14 +122,14 @@ cursor.lineY.set("visible", false);
 //  orientation: "horizontal"
 //}));
 
-chart.set("scrollbarY", am5.Scrollbar.new(root, {
+chart.set("scrollbarY", am5.Scrollbar.new(chartRoot, {
   orientation: "vertical"
 }));
 
 
 // Add legend
 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = chart.rightAxesContainer.children.push(am5.Legend.new(root, {
+var legend = chart.rightAxesContainer.children.push(am5.Legend.new(chartRoot, {
   width: 200,
   paddingLeft: 15,
   height: am5.percent(100)
