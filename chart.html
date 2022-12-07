@@ -34,7 +34,7 @@ mapRoot.setThemes([
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
-var mapChart = mapRoot.container.children.push(am5map.MapChart.new(root, {
+var mapChart = mapRoot.container.children.push(am5map.MapChart.new(mapRoot, {
   panX: "translateX",
   panY: "translateY",
   projection: am5map.geoMercator()
@@ -42,7 +42,7 @@ var mapChart = mapRoot.container.children.push(am5map.MapChart.new(root, {
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-var polygonSeries = mapChart.series.push(am5map.MapPolygonSeries.new(root, {
+var polygonSeries = mapChart.series.push(am5map.MapPolygonSeries.new(mapRoot, {
   geoJSON: am5geodata_worldLow,
   exclude: ["AQ"]
 }));
