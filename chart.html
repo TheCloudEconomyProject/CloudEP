@@ -32,7 +32,6 @@ mapRoot.setThemes([
   am5themes_Animated.new(mapRoot)
 ]);
 
-
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var mapChart = mapRoot.container.children.push(am5map.MapChart.new(root, {
@@ -84,7 +83,6 @@ root.setThemes([
   am5themes_Animated.new(root)
 ]);
 
-
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
@@ -95,7 +93,6 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   maxTooltipDistance: 0,
   pinchZoomX:true
 }));
-
 
 var date = new Date();
 date.setHours(0, 0, 0, 0);
@@ -118,7 +115,6 @@ function generateDatas(count) {
   return data;
 }
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
@@ -134,7 +130,6 @@ var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
-
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -164,7 +159,6 @@ for (var i = 0; i < 5; i++) {
   series.appear();
 }
 
-
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
@@ -172,17 +166,11 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 cursor.lineY.set("visible", false);
 
-
 // Add scrollbar
 // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-//chart.set("scrollbarX", am5.Scrollbar.new(root, {
-//  orientation: "horizontal"
-//}));
-
-chart.set("scrollbarY", am5.Scrollbar.new(root, {
-  orientation: "vertical"
+chart.set("scrollbarX", am5.Scrollbar.new(root, {
+  orientation: "horizontal"
 }));
-
 
 // Add legend
 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
