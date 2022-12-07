@@ -81,7 +81,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 5; i++) {
   var series = chart.series.push(am5xy.LineSeries.new(root, {
     name: "Series " + i,
     xAxis: xAxis,
@@ -118,9 +118,9 @@ cursor.lineY.set("visible", false);
 
 // Add scrollbar
 // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
-}));
+//chart.set("scrollbarX", am5.Scrollbar.new(root, {
+//  orientation: "horizontal"
+//}));
 
 chart.set("scrollbarY", am5.Scrollbar.new(root, {
   orientation: "vertical"
