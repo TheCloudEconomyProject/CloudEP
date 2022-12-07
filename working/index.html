@@ -1,14 +1,20 @@
-/**
- * ---------------------------------------
- * This demo was created using amCharts 5.
- * 
- * For more information visit:
- * https://www.amcharts.com/
- * 
- * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
- * ---------------------------------------
- */
+<!-- Styles -->
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+</style>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am5.ready(function() {
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -58,26 +64,32 @@ polygonSeries.mapPolygons.template.on("active", function (active, target) {
   if (previousPolygon && previousPolygon != target) {
     previousPolygon.set("active", false);
   }
-  if (target.get("active")) {
-    polygonSeries.zoomToDataItem(target.dataItem );
-  }
-  else {
-    chart.goHome();
-  }
+//  if (target.get("active")) {
+//    polygonSeries.zoomToDataItem(target.dataItem );
+//  }
+//  else {
+//    chart.goHome();
+//  }
   previousPolygon = target;
 });
 
 
 // Add zoom control
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
-chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+// chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 
 // Set clicking on "water" to zoom out
-chart.chartContainer.get("background").events.on("click", function () {
-  chart.goHome();
-})
+//chart.chartContainer.get("background").events.on("click", function () {
+//  chart.goHome();
+//})
 
 
 // Make stuff animate on load
 chart.appear(1000, 100);
+
+}); // end am5.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
