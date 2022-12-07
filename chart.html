@@ -195,8 +195,8 @@ mapRoot.setThemes([
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var mapChart = mapRoot.container.children.push(am5map.MapChart.new(mapRoot, {
-  panX: "translateX",
-  panY: "translateY",
+  panX: "none",
+  panY: "none",
   projection: am5map.geoMercator()
 }));
 
