@@ -79,9 +79,12 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(rootChart, {
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-for (var i = 0; i < 5; i++) {
+var regions = getGcpRegions()
+for (var region in regions) {
+//for (var i = 0; i < 5; i++) {
   var series = chart.series.push(am5xy.LineSeries.new(rootChart, {
-    name: "Series " + i,
+    // name: "Series " + i,
+    name: region
     xAxis: xAxis,
     yAxis: yAxis,
     valueYField: "value",
