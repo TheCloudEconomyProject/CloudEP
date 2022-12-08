@@ -21,6 +21,6 @@ function generateDatas(count) {
 
 function getGcpRegions() {
   const regions = [];
-  regions.push("asia-southeast1", "asia-south1", "us-west3", "europe-west8", "asia-northeast2");
+  regions.push("asia-southeast1", "asia-south1", "us-west3", "europe-west8", "asia-northeast2", "europe-west4", "southamerica-west1");
   return regions;
 }
