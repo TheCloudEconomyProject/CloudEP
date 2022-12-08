@@ -21,6 +21,6 @@ function generateDatas(count) {
 
 function getGcpRegions() {
   const regions = [];
-  fruits.push("asia-southeast1", "asia-south1", "us-west3", "europe-west8", "asia-northeast2");
-  return regions
+  regions.push("asia-southeast1", "asia-south1", "us-west3", "europe-west8", "asia-northeast2");
+  return regions;
 }
