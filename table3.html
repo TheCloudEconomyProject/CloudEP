@@ -1,0 +1,109 @@
+<link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+
+
+<div>
+    <select id="filter-field">
+      <option></option>
+      <option value="name">Service</option>
+      <option value="region">Region</option>
+      <option value="cost">Cost</option>
+
+      <option value="rating">Rating</option>
+    </select>
+  
+    <select id="filter-type">
+      <option value="=">=</option>
+      <option value="<"><</option>
+      <option value="<="><=</option>
+      <option value=">">></option>
+      <option value=">=">>=</option>
+      <option value="!=">!=</option>
+      <option value="like">like</option>
+    </select>
+  
+    <input id="filter-value" type="text" placeholder="value to filter">
+  
+    <button id="filter-clear">Clear Filter</button>
+</div>
+
+<div id="example-table"></div>
+
+<script>
+    //define data array
+
+var tabledata = [
+    {id:1, name:"VMs", cost:12, region:"east", rating:1,  dou:"19/02/1984"},
+    {id:2, name:"Simple storage", cost:1, region:"west", rating:2, col:"blue", dou:"14/05/1982"},
+    {id:3, name:"k8s", cost:42, region:"west", rating:0, dou:"22/05/1982"},
+    {id:4, name:"FaaS", cost:100, region:"east", rating:1, dou:"01/08/1980"},
+    {id:5, name:"DBaaS", cost:16, region:"west", rating:5, dou:"31/01/1999"},
+    {id:6, name:"NoSQL", cost:38, region:"east", rating:4, dou:"12/05/1966"},
+];
+
+
+//Define variables for input elements
+var fieldEl = document.getElementById("filter-field");
+var typeEl = document.getElementById("filter-type");
+var valueEl = document.getElementById("filter-value");
+
+//Trigger setFilter function with correct parameters
+function updateFilter(){
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal;
+
+  if(filterVal == "function" ){
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  }else{
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if(filterVal){
+    table.setFilter(filter,typeVal, valueEl.value);
+  }
+}
+
+//Update filters on value change
+document.getElementById("filter-field").addEventListener("change", updateFilter);
+document.getElementById("filter-type").addEventListener("change", updateFilter);
+document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+
+//Clear filters on "Clear Filters" button click
+document.getElementById("filter-clear").addEventListener("click", function(){
+  fieldEl.value = "";
+  typeEl.value = "=";
+  valueEl.value = "";
+
+  table.clearFilter();
+});
+
+
+var table = new Tabulator("#example-table", {
+    data:tabledata,           //load row data from array
+    layout:"fitColumns",      //fit columns to width of table
+    responsiveLayout:"hide",  //hide columns that dont fit on the table
+    addRowPos:"top",          //when adding a new row, add it to the top of the table
+    history:true,             //allow undo and redo actions on the table
+    pagination:"local",       //paginate the data
+    paginationSize:3,         //allow 7 rows per page of data
+    paginationCounter:"rows", //display count of paginated rows in footer
+    movableColumns:true,      //allow column order to be changed
+    initialSort:[             //set the initial sort order of the data
+        {column:"name", dir:"asc"},
+    ],
+    columnDefaults:{
+        tooltip:true,         //show tool tips on cells
+    },
+    columns:[                 //define the table columns
+        {title:"Service", field:"name", editor:"input", width:330,},
+        {title:"Cost", field:"cost", width:130, hozAlign:"left", editor:true},
+        {title:"Region", field:"region", width:95},
+        {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100, editor:true},
+        {title:"Last update", field:"dou", width:130, sorter:"date", hozAlign:"center"},
+    ],
+});
+</script>
